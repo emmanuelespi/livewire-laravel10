@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class ListStudents extends Component
 {
     use WithPagination;
-    #[Layout('layouts.app')]
+    
     public function render()
     {
         return view('livewire.list-students',[
