@@ -73,9 +73,8 @@
 
                                             <td
                                                 class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                <a wire:navigate href="#" class="text-indigo-600 hover:text-indigo-900">
-                                                {{-- <a wire:navigate href="{{ route('students.edit', $student->id) }}"
-                                                    class="text-indigo-600 hover:text-indigo-900"> --}}
+                                                <a wire:navigate href="{{ route('students.edit', $student->id) }}"
+                                                    class="text-indigo-600 hover:text-indigo-900">
                                                     Edit
                                                 </a>
                                                 <button class="ml-2 text-indigo-600 hover:text-indigo-900">
