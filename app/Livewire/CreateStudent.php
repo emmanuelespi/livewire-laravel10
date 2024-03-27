@@ -15,17 +15,20 @@ class CreateStudent extends Component
     #[Validate('required')] 
     public $class_id;
 
+    public function addStudent()
+    {
+        $this->validate();
+
+        $this->form->storeStudent($this->class_id);
+
+        return $this->redirect(route('students.index'),navigate:true);
+    }
+
     public function updatedClassId($value)
     {
         $this->form->setSections($value);
     }
 
-    public function addStudent()
-    {
-        $this->form->storeStudent($this->class_id);
-
-        return $this->redirect(route('students.index'),navigate:true);
-    }
     public function render()
     {
         return view('livewire.create-student', [

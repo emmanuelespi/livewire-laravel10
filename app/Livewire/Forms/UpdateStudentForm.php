@@ -15,8 +15,7 @@ class UpdateStudentForm extends Form
     #[Validate('required')]
     public $name;
 
-    #[Validate('required|email|unique:students,email')]
-    public $email;
+    
 
     #[Validate('required')]
     public $section_id;
@@ -29,25 +28,24 @@ class UpdateStudentForm extends Form
 
         $this->fill($student->only([
             'name',
-            'email',
             'section_id'
         ]));
 
         $this->sections = Section::where('class_id',$this->student->class_id)->get();
     }
 
-    public function updateStudent($class_id)
+    public function updateStudent($class_id,$email)
     {
-        $this->validate([
-            'email' => 'required|email|unique:students,email, ' . $this->student->id,
-        ]);
+        $this->validate();
 
         $this->student->update([
             'name' => $this->name,
-            'email' => $this->email,
+            'email' => $email,
             'class_id' => $class_id,
             'section_id' => $this->section_id,
         ]);
+
+        return $this->redirect(route('students.index'),navigate:true);
     }
 
     public function setSections($class_id)
